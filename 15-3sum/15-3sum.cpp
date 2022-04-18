@@ -72,11 +72,15 @@ public:
                 }
                 else if (nums[i] + nums[j] + nums[k] == 0) {
                     curr_sum = {nums[i] , nums[j], nums[k]};
-                    if (!search_duplicate(sums, curr_sum)) {
-                        sums.emplace_back(curr_sum);   
-                    }
+                    sums.emplace_back(curr_sum);
                     ++j;
                     --k;
+                    while (nums[j] == nums[j - 1] && j < k) {
+                        ++j;
+                    }
+                    while (nums[k] == nums[k + 1] && k > j) {
+                        --k;
+                    }
                 }
                 else if (nums[i] + nums[j] + nums[k] > 0) {
                     --k;
