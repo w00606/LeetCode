@@ -13,20 +13,15 @@ class Solution {
 public:
     
     void recurTraverse(TreeNode* node, vector<int>& ret) {
-        if (node->left != NULL) {
+        if (node) {
             recurTraverse(node->left, ret);
-        }
-        ret.emplace_back(node->val);
-        if (node->right != NULL) {
-            recurTraverse(node->right, ret);
+            ret.emplace_back(node->val);
+            recurTraverse(node->right, ret);   
         }
     }
     
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ret;
-        if (root == NULL) {
-            return ret;
-        }
         recurTraverse(root, ret);
         return ret;
     }
